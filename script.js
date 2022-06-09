@@ -20,10 +20,10 @@ function playRound(playerSelection,computerSelection){
     console.log("Computer: ", computerSelection);
 
     const plrChoice = document.querySelector("#my-sel");
-    plrChoice.textContent= `${playerSelection}`;
+    plrChoice.textContent= `${playerSelection[0].toUpperCase()+playerSelection.slice(1)}`;
     plrChoice.setAttribute("style","text-align:center;");
     const cpuChoice = document.querySelector("#cpu-sel");
-    cpuChoice.textContent= `${computerSelection}`;
+    cpuChoice.textContent= `${computerSelection[0].toUpperCase()+computerSelection.slice(1)}`;
     cpuChoice.setAttribute("style","text-align:center;");
 
     /* rock-paper-scissors logic implementation */
@@ -86,9 +86,6 @@ function gameWinner() {
 
 let playerScore = 0;
 let cpuScore = 0;
-
-
-
 let computerSelection
 const mainButtons = document.querySelectorAll(".main-btn");
 
@@ -97,6 +94,7 @@ mainButtons.forEach((button)=> {
         let playerSelection = button.id
         console.log("player selection: ",playerSelection)
         let result = playRound(playerSelection,computerSelection)
+        
         console.log(result)
         const res = document.querySelector("#res");
         res.textContent = `${result}`;
