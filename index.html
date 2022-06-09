@@ -6,9 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Rock Paper Scissor</title>
     <link rel="stylesheet" href="style.css">
-    
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <script src="script.js"></script>
+    <div class="title">Rock, Paper, Scissors...</div>
+    <div class="button-container">
+        <button class="main-btn" id="rock">Rock</button>
+        <button class="main-btn" id="paper">Paper</button>
+        <button class="main-btn" id="scissors">Scissors</button>
+    </div>
+    <div class="sub-title">...shoot!</div>
+    <div class="compare">
+        <div class="my-choice">
+            <p>My choice</p>
+            <p class="choice" id="my-sel"></p>
+        </div>
+        <div class="VS">VS</div>
+        <div class="cpu-choice">
+            <p>CPU choice</p>
+            <p class="choice" id="cpu-sel"> </p>
+        </div>
+    </div>
+    <div class="text-result" id="res"> </div>
+
+    <div class="score-container">
+        <div class="my-score">
+            <p>My score:</p>
+            <p class="score" id="plr-scr">0</p>
+        </div>
+        <div class="cpu-score">
+            <p>CPU-score:</p>
+            <p class="score" id="cpu-scr">0</p>
+        </div>
+    </div>
+    <div class="res-container"></div>
 </body>
 </html>

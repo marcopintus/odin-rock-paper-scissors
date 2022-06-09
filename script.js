@@ -1,15 +1,30 @@
+
 function computerPlay(){
     /* generates the random output of the computer play */
     choice = ["Rock", "Paper", "Scissors"];
     return choice[Math.floor(Math.random()*3)];
 }
 
+function updateScoreUI(playerScore,cpuScore){
+    const plrScr = document.querySelector("#plr-scr");
+    plrScr.textContent = `${playerScore}`
+    const cpuScr = document.querySelector("#cpu-scr");
+    cpuScr.textContent = `${cpuScore}`
+}
+
 function playRound(playerSelection,computerSelection){
     /* plays one single round of the r-p-s game */
-
+    computerSelection = computerPlay().toLowerCase();
     /* stating the player choice and computer choice */
     console.log("Player: ",playerSelection);
     console.log("Computer: ", computerSelection);
+
+    const plrChoice = document.querySelector("#my-sel");
+    plrChoice.textContent= `${playerSelection}`;
+    plrChoice.setAttribute("style","text-align:center;");
+    const cpuChoice = document.querySelector("#cpu-sel");
+    cpuChoice.textContent= `${computerSelection}`;
+    cpuChoice.setAttribute("style","text-align:center;");
 
     /* rock-paper-scissors logic implementation */
     if (playerSelection==computerSelection){
@@ -32,48 +47,65 @@ function playRound(playerSelection,computerSelection){
         } else if (computerSelection=="paper"){
             return "You Win! Scissors beat Paper";
         }
-    } else if(playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors" ){
-        return "Wrong Player input"; /* this will be deleted with the graphical interface */
-    }
+    } 
 }
 
-function game() { 
-    /* play a 5 round game of rock-paper-scissors */
+function scoreCounter(result){
+    if (result[4]=="W"){
+        playerScore++;
+    } else if(result[4]=="L"){
+        cpuScore++;
+    }
+    console.log("Live scores: ");
+    console.log("Player: ",playerScore);
+    console.log("Computer: ",cpuScore);
 
-    /* initialize the score */
-    let playerScore = 0;
-    let cpuScore = 0;
+    updateScoreUI(playerScore,cpuScore);
+}
 
-    /* first to three wins: playerScore < 3 && cpuScore < 3 */
-    /* five rounds */
-    for(let i=0;i<5;i++){
 
-        /* player and computer selections */
-        let playerSelection = prompt("Rock-Paper-Scissor?").toLowerCase();
-        let computerSelection = computerPlay().toLowerCase();
+function gameWinner() {
+    if (playerScore>cpuScore){
+        console.log("You've Won the match!");
+        let resContainer = document.querySelector('.res-container');
+        resContainer.textContent = "You've Won the match!"
+        resContainer.setAttribute("style", "text-align:center;");
+    } else if(cpuScore>playerScore){
+        console.log("You've Lost the match!");
+        let resContainer = document.querySelector('.res-container');
+        resContainer.textContent = "You've Lost the match!"
+        resContainer.setAttribute("style", "text-align:center;");
+    } else{
+        console.log("It's a Draw!");
+    }
+    playerScore = 0;
+    cpuScore = 0;
+    updateScoreUI(playerScore,cpuScore)
+}
 
+
+let playerScore = 0;
+let cpuScore = 0;
+
+
+
+let computerSelection
+const mainButtons = document.querySelectorAll(".main-btn");
+
+mainButtons.forEach((button)=> {
+    button.addEventListener('click', () => {
+        let playerSelection = button.id
+        console.log("player selection: ",playerSelection)
         let result = playRound(playerSelection,computerSelection)
         console.log(result)
-        if (result[4]=="W"){
-            playerScore++;
-        } else if(result[4]=="L"){
-            cpuScore++;
-        }
-        console.log("Live scores: ");
-        console.log("Player: ",playerScore);
-        console.log("Computer: ",cpuScore);
-
-        if (playerScore>cpuScore){
-            console.log("You've Won!");
-        } else if(cpuScore>playerScore){
-            console.log("You've Lost!");
-        } else{
-            console.log("It's a Draw!");
+        const res = document.querySelector("#res");
+        res.textContent = `${result}`;
+        scoreCounter(result)
+        if (playerScore ==3 || cpuScore == 3){
+            gameWinner()
         }
     }
+    ) }
+    );
 
-
-}
-
-
-game()
+    
