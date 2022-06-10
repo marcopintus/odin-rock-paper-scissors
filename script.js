@@ -142,8 +142,8 @@ mainButtons.forEach((button)=> {
                 res.textContent = `${result}`;
                 /* then the score is updated */
                 scoreCounter(result)
-                if (playerScore ==3 || cpuScore == 3){
-                    /* the first to reach 3 points between player and cpu wins */
+                if (playerScore == 5 || cpuScore == 5){
+                    /* the first to reach 5 points between player and cpu wins */
                     gameWinner()
                 }
             }
