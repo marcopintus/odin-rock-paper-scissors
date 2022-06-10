@@ -43,13 +43,18 @@ body{
     background-color: rgb(22, 9, 77);
     color: azure;
     font-size: 24px;
+    transition: all 0.3s;
+    
 }
 
-#rock:hover,
-#paper:hover,
-#scissors:hover{
+.main-btn:hover{
     transform: scale(1.1);
     box-shadow: 0px 0px 18px azure;
+}
+
+.main-btn:active{
+    transform: scale(0.9);
+    box-shadow: 0px 0px 0px azure;
 }
 
 img{
@@ -89,12 +94,59 @@ img{
     text-align: center;
 }
 
-.my-sel,
-.cpu-sel{
+#my-sel,
+#cpu-sel{
     font-size: 24px;
     font-weight: 500;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+
+.cont-res-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.res-container{
+    font-size: 48px;
+    font-weight: 900;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(21, 9, 77, 0.95);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.93);
+}
+
+.play-again{
+    font-size: 32px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 100px;
+    border: 12px solid azure;
+    border-radius: 12px;
+    background-color: azure;
+    color:rgba(21, 9, 77);
+    margin: 40px;
+    transition: all 0.3s;
+}
+
+.play-again:hover{
+    transform: scale(1.05);
+    background-color: rgba(21, 9, 77);
+    color: azure;
+    box-shadow: 0px 0px 18px azure;
+}
+
+.play-again:active{
+    transform: scale(0.95);
+    box-shadow: 0px 0px 0px azure;
 }
